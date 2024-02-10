@@ -1,14 +1,17 @@
-import { useState } from "react";
-import jsonData from "../data.json"
-
-function SearchBar() {
- const [products, setProducts] = useState(jsonData);
+function SearchBar({ searchTerm, setSearchTerm }) {    // Updates searchTerm in ProductsPage component 
+  const handleSearchBar = (e) => {
+    setSearchTerm(e.target.value);
+  };
 
   return (
-    <div>
-      <h1>Search Bar</h1>
-    
-    </div>
+    <form onSubmit={(e) => e.preventDefault()}>
+      {/* Input field for searching products displaying current searchTerm */}
+      <input
+        type='text'
+        value={searchTerm}
+        onChange={handleSearchBar}
+      />
+    </form>
   );
 }
 

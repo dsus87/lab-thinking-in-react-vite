@@ -1,15 +1,8 @@
-// components/ProductTable.jsx
-import React, { useState } from 'react';
-import jsonData from '../data.json';
-import ProductRow from '../components/ProducRow'; 
+import ProductRow from "./ProductRow";
 
-function ProductTable(props) {
-  const [products] = useState(jsonData);
-
-  return (
-    <div>
-      <h1>Product Table</h1>
-      <table className="table">
+function ProductTable({ products }) { // takes a list of productss a prop from ProductsPage (parent)
+    return (
+        <table>
         <thead>
           <tr>
             <th>Name</th>
@@ -17,13 +10,14 @@ function ProductTable(props) {
           </tr>
         </thead>
         <tbody>
-          {products.map((product) => (
+           {/* Iterates over the filtered list of products passed down from ProductsPage.
+              This list changes based on the search term entered by the user. */}
+          {products.map(product => (
             <ProductRow key={product.id} product={product} />
           ))}
         </tbody>
       </table>
-    </div>
-  );
+    );
 }
 
 export default ProductTable;
